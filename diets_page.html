@@ -1,0 +1,593 @@
+<html>
+
+<head>
+    <title>Diet-Tracker</title>
+    <link rel="icon" href="https://www.logopik.com/wp-content/uploads/edd/2018/06/Diet-Logo-Design.png" type="image/x-icon">
+
+    <style>
+        @import url("https://fonts.googleapis.com/css?family=Dosis:400,700");
+         :root {
+            --main-white-color: #f2f2f2;
+            --main-green-color: #2e8b57;
+            --main-black-color: black;
+            --main-purple-color: #9e89b8;
+        }
+        
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+        
+        button {
+            background: #1be7a5;
+            background: linear-gradient(#1be7a5, #16831d);
+            border-radius: 11px;
+            padding: 5px 10px;
+            color: #ffffff;
+            display: inline-block;
+            font: normal bold 20px/1 "Open Sans", sans-serif;
+            text-align: center;
+        }
+        
+        ul {
+            list-style: none;
+        }
+        
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+        
+        body {
+            font: 16px/1.5 "Dosis", sans-serif;
+            background: var(--main-white-color);
+            /*IE FIX*/
+            display: flex;
+            flex-direction: column;
+        }
+        /* CONTAINER
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+        
+        .wrapper {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        
+        .wrapper>* {
+            padding: 0px;
+        }
+        /* HEADER
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+        
+        .page-header {
+            background: var(--main-green-color);
+        }
+        
+        .page-header nav {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+        
+        .page-header ul {
+            display: flex;
+            order: 1;
+            width: 100%;
+            margin-top: 15px;
+        }
+        
+        .page-header ul li:not(:last-child) {
+            padding-right: 15px;
+        }
+        /* MAIN
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+        
+        .page-main {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            flex-grow: 1;
+            min-height: 350px;
+            background: url(https://thumbs.dreamstime.com/b/healthy-food-background-studio-photo-different-fruits-vegetables-white-wooden-table-high-resolution-product-68278527.jpg) no-repeat center / cover;
+            background-blend-mode: luminosity;
+            color: black;
+        }
+        
+        .find-diet1 {
+            max-width: 500px;
+            position: relative;
+            left: 200px;
+        }
+        
+        .find-diet2 {
+            max-width: 500px;
+            position: relative;
+            left: 1000px;
+            top: -390px;
+        }
+        
+        .find-diet3 {
+            max-width: 500px;
+            position: relative;
+            top: -350px;
+            left: 200px;
+        }
+        
+        .find-diet4 {
+            max-width: 500px;
+            position: relative;
+            left: 1000px;
+            top: -780px;
+        }
+        
+        .page-main h1 {
+            margin-bottom: 20px;
+            text-align: center;
+            font-size: 60px;
+            color: #00BFFF;
+        }
+        
+        .page-main h2 {
+            color: #00BFFF;
+        }
+        
+        .para {
+            margin-top: 10px;
+            text-align: center;
+            font-size: 20px;
+        }
+        
+        .PR {
+            position: relative;
+            max-width: 500px;
+            left: 0px;
+            top: -350px;
+        }
+        
+        .ET {
+            position: relative;
+            max-width: 500px;
+            top: -743px;
+            left: 600px;
+        }
+        
+        .IG {
+            position: relative;
+            max-width: 500px;
+            top: -1143px;
+            left: 1200px;
+        }
+        
+        .botm {
+            background-color: var(--main-green-color);
+            width: 100%;
+            position: relative;
+            height: 500px;
+        }
+        /* FOOTER
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+        
+        .page-footer {
+            display: flex;
+            flex-direction: column-reverse;
+            background: var(--main-white-color);
+        }
+        
+        .page-footer ul {
+            display: flex;
+            font-size: 1.5rem;
+            margin-bottom: 5px;
+        }
+        
+        .page-footer ul li:not(:last-child) {
+            margin-right: 20px;
+        }
+        /* MQ
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+        
+        @media screen and (min-width: 550px) {
+            .page-header ul {
+                width: auto;
+                margin-top: 0;
+            }
+            .page-header .cta-contact {
+                order: 1;
+            }
+            .page-footer {
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
+            }
+            .page-footer ul {
+                margin-bottom: 0;
+            }
+        }
+        
+        @media screen and (min-width: 768px) {
+            body {
+                font-size: 18px;
+            }
+            .page-main {
+                padding-left: 90px;
+            }
+        }
+        /* ANIMATIONS
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+        
+        .page-header nav>*,
+        .page-main,
+        .page-footer>* {
+            opacity: 0;
+        }
+        
+        .page-header,
+        .page-footer,
+        .page-main .text-wrapper {
+            overflow: hidden;
+        }
+        
+        .page-header nav>* {
+            transform: translateY(-30px);
+        }
+        
+        .page-footer>* {
+            transform: translateY(30px);
+        }
+        
+        .page-header {
+            position: relative;
+        }
+        
+        .page-header::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: var(--main-purple-color);
+            z-index: 99999;
+            transform: scaleX(0);
+        }
+        
+        .page-main .text-wrapper+.text-wrapper {
+            margin-top: 10px;
+        }
+        
+        .page-main .text-wrapper * {
+            transform: translateY(120%);
+        }
+        
+        .page-main .p-wrapper * {
+            transform: translateY(-120%);
+        }
+        
+        .loaded .page-header::after {
+            animation: scaleIn 1.3s ease-in 0.1s forwards;
+        }
+        
+        .loaded .page-main {
+            animation: fadeIn 1s ease-in 0.5s forwards;
+        }
+        
+        .loaded .page-header nav>*,
+        .loaded .page-footer>* {
+            animation: fadeIn 1s ease-in 0.5s forwards, slideIn 0.6s ease-in 0.7s forwards;
+        }
+        
+        .loaded .page-main .text-wrapper * {
+            animation: slideIn 0.6s cubic-bezier(0.54, 0.46, 0.54, 0.94) 1s forwards;
+        }
+        
+        @keyframes fadeIn {
+            60% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+        
+        @keyframes scaleIn {
+            100% {
+                transform: scaleX(1);
+            }
+        }
+        
+        @keyframes slideIn {
+            100% {
+                transform: translateY(0);
+            }
+        }
+    </style>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script>
+        window.addEventListener("load", () => {
+            document.querySelector("body").classList.add("loaded");
+        });
+    </script>
+</head>
+
+<body>
+    <div class="wrapper">
+        <header class="page-header">
+            <nav>
+                <img src="https://w7.pngwing.com/pngs/1004/377/png-transparent-health-food-logo-diet-eating-trademark-logo-food-leaf-sleep.png" height="70px" />
+                <ul style="padding-left:600px">
+                    <li>
+                        <a href="diets_page.html">Diets</a>
+                    </li>
+                    <li style="padding-left:50px">
+                        <a href="foods_page.html">Food</a>
+                    </li>
+                    <li style="padding-left:50px">
+                        <a href="tracking.html">Track Calories</a>
+                    </li>
+                    <li style="padding-left:50px">
+                        <a href="about_us_page.html">About Us</a>
+                    </li>
+                    <li style="padding-left:550px">
+                        <form action="/logout" method="post">
+                            <button class="cta-content" onclick="">Log-Out</button>
+                        </form>
+                    </li>
+                </ul>
+            </nav>
+        </header>
+        <main class="page-main">
+            <section>
+                <h2 id="keto">Keto Diets</h2>
+                <p>
+                    <h3>What a Keto diet is ?</h3>
+                    <img align="right" src="https://img.webmd.com/dtmcms/live/webmd/consumer_assets/site_images/articles/health_tools/whats_a_ketogenic_diet_slideshow/493ss_thinkstock_rf_foods_high_in_protein.jpg"></img>
+                    </br>
+                    The ketogenic diet is a very low carb, high fat diet that shares many similarities with the Atkins and low carb diets.</br>
+                    </br>
+                    It involves drastically reducing carbohydrate intake and replacing it with fat. This reduction in carbs puts your body into a metabolic state called ketosis.</br>
+                    </br>
+                    When this happens, your body becomes incredibly efficient at burning fat for energy. It also turns fat into ketones in the liver, which can supply energy for the brain.</br>
+                    </br>
+                    Ketogenic diets can cause significant reductions in blood sugar and insulin levels. This, along with the increased ketones, has some health benefits.</br>
+                    </br>
+                    <h3>Types of Keto diets</h3>
+                    </br>
+                    There are several versions of the ketogenic diet, including:</br>
+                    </br>
+                    <b>Standard ketogenic diet (SKD):</b> This is a very low carb, moderate protein and high fat diet. It typically contains 70% fat, 20% protein, and only 10% carbs.</br>
+                    </br>
+                    <b>Cyclical ketogenic diet (CKD):</b> This diet involves periods of higher carb refeeds, such as 5 ketogenic days followed by 2 high carb days.</br>
+                    </br>
+                    <b>Targeted ketogenic diet (TKD):</b> This diet allows you to add carbs around workouts.</br>
+                    </br>
+                    High protein ketogenic diet: This is similar to a standard ketogenic diet, but includes more protein. The ratio is often 60% fat, 35% protein, and 5% carbs.</br>
+                    </br>
+                    However, only the standard and high protein ketogenic diets have been studied extensively. Cyclical or targeted ketogenic diets are more advanced methods and primarily used by bodybuilders or athletes.</br>
+                    </br>
+                    The information in this article mostly applies to the standard ketogenic diet (SKD), although many of the same principles also apply to the other versions.</br>
+                    </br>
+                    <h3>Other health benefits of keto</h3>
+                    </br>
+                    The ketogenic diet actually originated as a tool for treating neurological diseases such as epilepsy.</br>
+                    </br>
+                    Studies have now shown that the diet can have benefits for a wide variety of different health conditions:</br>
+                    </br>
+                    <b>Heart disease:</b> The ketogenic diet can help improve risk factors like body fat, HDL (good) cholesterol levels, blood pressure, and blood sugar.</br>
+                    </br>
+                    <b>Cancer:</b> The diet is currently being explored as an additional treatment for cancer, because it may help slow tumor growth.</br>
+                    </br>
+                    <b>Alzheimer’s disease:</b> The keto diet may help reduce symptoms of Alzheimer’s disease and slow its progression.</br>
+                    </br>
+                    <b>Epilepsy:</b> Research has shown that the ketogenic diet can cause significant reductions in seizures in epileptic children.</br>
+                    </br>
+                    <b>Parkinson’s disease:</b> Although more research is needed, one study found that the diet helped improve symptoms of Parkinson’s disease.</br>
+                    </br>
+                    <b>Polycystic ovary syndrome:</b> The ketogenic diet can help reduce insulin levels, which may play a key role in polycystic ovary syndrome.</br>
+                    </br>
+                    <b>Brain injuries:</b> Some research suggests that the diet could improve outcomes of traumatic brain injuries.</br>
+                    </br>
+                    <b>Weight:</b> Ketogenic diets can help you lose weight.</br>
+                    </br>
+                    However, keep in mind that research into many of these areas is far from conclusive.</br>
+                    </br>
+                </p>
+            </section>
+            <section>
+                <h2 id="high-protein">High-protein diet</h2>
+                <img align="right" src="https://img.webmd.com/dtmcms/live/webmd/consumer_assets/site_images/articles/health_tools/high_protein_diet_slideshow/getty_rm_photo_of_assorted_meats_cooking_on_grill.jpg"></img>
+                <p>
+                    <h3>Foods to include and exclude</h3>
+                    <ul>
+                        <li>eggs</li>
+                        <li>leaner cuts of beef</li>
+                        <li>chicken breasts</li>
+                        <li>turkey breasts</li>
+                        <li>beans, such as garbanzo beans or black beans</li>
+                        <li>shrimp</li>
+                        <li>nuts and seeds, such as pumpkin seeds, peanuts, and almonds</li>
+                        <li>fish, including salmon, flounder, and haddock</li>
+                        <li>sprouted grain bread, such as Ezekiel bread</li>
+                        <li>whey or plant protein shakes</li>
+                        <li>lentils</li>
+                        <li>quinoa</li>
+                        <li>chickpeas</li>
+                        <li>oats</li>
+                        <li>dairy products, such as Greek yogurt, cow’s milk, or cheese</li>
+                        <li>vegetables, including Brussels sprouts and broccoli</li>
+                    </ul>
+                    <h3>Benifits</h3>
+                    </br>
+                    In addition to aiding weight loss, protein provides the body with some essential benefits. The benefits of protein include:</br>
+                    </br>
+                    <ul>
+
+                        <li>Providing enzymes that help power thousands of chemical reactions throughout the body</li>
+                        <li>Helping the body maintain and repair hair, skin, muscles, and bones</li>
+                        <li>Certain proteins are necessary to produce hormones that help the body’s organs and cells communicate</li>
+                    </ul>
+                    </br>
+                    Protein also provides amino acids. There are 22 amino acids, nine of which are essential to obtain from the diet because the body does not produce them.</br>
+                    </br>
+                    Protein from animals tends to contain all of the amino acids, so people refer to it as a complete</br>
+                    </br>
+                    protein. In contrast, many plant proteins only provide some of the amino acids, meaning that </br>
+                    </br>
+                    people need to combine them with other protein sources to get all of the essential amino acids.</br>
+                    </br>
+                    <h3>How to eat a high-protein diet</h3>
+                    There are many possible ways to include more protein in the diet, even for those with other dietary restrictions.</br>
+                    </br>
+                    For example, people who follow a vegetarian or vegan diet or those who avoid dairy can still eat a high-protein diet.</br>
+                    </br>
+                    People can either adjust their current diet to include more protein or follow a specific high-protein diet plan.</br>
+                    </br>
+                    Taking the steps below may help a person when they start a high-protein diet:</br>
+                    </br>
+                    <ul>
+                        <li>figuring out their individual protein needs, which will depend on their body weight</li>
+                        <li>making meal plans for the week</li>
+                        <li>finding and using high-quality proteins</li>
+                        <li>including at least 25–30 grams of protein in each meal</li>
+                        <li>keeping a food journal to track the amount and types of food that they eat</li>
+                        <li>eating well-balanced meals</li>
+                        <li>including both plant and lean animal sources of protein in the diet</li>
+                    </ul>
+                </p>
+            </section>
+            <section>
+                <h2 id="low-carb">Low-carb diet</h2>
+                <img align="right" src="https://images.medicinenet.com/images/article/main_image/can-you-eat-too-much-fiber-on-ketogenic-diet.jpg"></img>
+                <p>
+                    <h3>What a low-carb diet is ?</h3>
+                    Your food choices depend on a few things, including how healthy you are, how much you exercise and how much weight you have to lose.</br>
+                    </br>
+                    Consider this meal plan as a general guideline, not something written in stone.</br>
+                    </br>
+                    <b>Eat:</b> Meat, fish, eggs, vegetables, fruit, nuts, seeds, high-fat dairy, fats, healthy oils and maybe even some tubers and non-gluten grains.</br>
+                    </br>
+                    <b>Don’t eat:</b> Sugar, HFCS, wheat, seed oils, trans fats, “diet” and low-fat products and highly processed foods.</br>
+                    </br>
+                    <h3>Foods to Avoid</h3>
+                    You should avoid these six food groups and nutrients, in order of importance:</br>
+                    </br>
+                    <ul>
+                        <li><b>Sugar:</b> Soft drinks, fruit juices, agave, candy, ice cream and many other products that contain added sugar.</li>
+                        <li><b>Refined grains:</b> Wheat, rice, barley and rye, as well as bread, cereal and pasta.</li>
+                        <li><b>Trans fats:</b> Hydrogenated or partially hydrogenated oils.</li>
+                        <li><b>Diet and low-fat products:</b> Many dairy products, cereals or crackers are fat-reduced, but contain added sugar.</li>
+                        <li><b>Highly processed foods:</b> If it looks like it was made in a factory, don’t eat it.</li>
+                        <li><b>Starchy vegetables:</b> It’s best to limit starchy vegetables in your diet if you’re following a very low-carb diet.</li>
+                    </ul>
+                    <b> You must read ingredient lists even on foods labelled as health foods.</b></br>
+                    </br>
+                </p>
+            </section>
+            <section>
+                <h2 id="vegetarian">Vegetarian diet</h2>
+                <img align="right" src="https://images.immediate.co.uk/production/volatile/sites/30/2020/08/balanced-diet-vegetarians-guide-image-700-350-988e065.jpg?webp=true&quality=90&resize=385%2C350"></img>
+                <p>
+                    <h3>What a vegetarian diet is</h3>
+                    A well-planned vegetarian diet is a healthy way to meet your nutritional needs. Find out</br>
+                    </br>
+                    what you need to know about a plant-based diet. Vegetarian diets continue to increase in </br>
+                    </br>
+                    popularity.Reasons for following a vegetarian diet are varied but include health benefits,</br>
+                    </br>
+                    such as reducing your risk of heart disease, diabetes and some cancers.</br>
+                    </br>
+                    </br>
+                    Yet some vegetarians rely too heavily on processed foods, which can be high in calories, sugar, fat and sodium.</br>
+                    </br>
+                    And they may not eat enough fruits, vegetables, whole grains and calcium-rich foods, thus missing out on </br>
+                    </br>
+                    the nutrients they provide.</br>
+                    </br>
+                    </br>
+                    However, with a little planning a vegetarian diet can meet the needs of people of all ages, including children,</br>
+                    </br>
+                    teenagers, and pregnant or breast-feeding women. The key is to be aware of your nutritional needs so that you </br>
+                    </br>
+                    plan a diet that meets them.</br>
+                    </br>
+                    <h3>Types of vegetarian diets</h3>
+                    </br>
+                    When people think about a vegetarian diet, they typically think about a diet that doesn't include meat, poultry or fish.</br>
+                    </br>
+                    But vegetarian diets vary in what foods they include and exclude:</br>
+                    <ul>
+                        <li><b>Lacto-vegetarian:</b> diets exclude meat, fish, poultry and eggs, as well as foods that contain them. Dairy products, such as milk, cheese, yogurt and butter, are included.</li>
+                        <li><b>Ovo-vegetarian:</b> diets exclude meat, poultry, seafood and dairy products, but allow eggs.</li>
+                        <li><b>Lacto-ovo:</b> vegetarian diets exclude meat, fish and poultry, but allow dairy products and eggs.</li>
+                        <li><b>Pescatarian:</b> diets exclude meat and poultry, dairy, and eggs, but allow fish.</li>
+                        <li><b>Vegan:</b> diets exclude meat, poultry, fish, eggs and dairy products — and foods that contain these products.</li>
+                    </ul>
+                    Some people follow a semivegetarian diet — also called a flexitarian diet — which is primarily a plant-based diet but</br>
+                    </br>
+                    includes meat, dairy, eggs, poultry and fish on occasion or in small quantities.</br>
+                    </br>
+                </p>
+            </section>
+            <section>
+                <h2 id="low-fat">Low-fat diet</h2>
+                <p>
+                    <h3>Why choose a low fat diet?</h3>
+                    </br>
+                    The primary reasons for choosing a low fat diet tend to be to help reduce overall calorie intake and to improve cholesterol levels.</br>
+                    </br>
+                    To help achieve these aims a low fat diet should be appropriately balanced to include a healthy amount of vitamins and minerals.</br>
+                    </br>
+                    <h3>Low fat diet foods</h3>
+
+                    Typically a low fat diet will include foods such as:</br>
+                    </br>
+                    <ul>
+                        <li><b>Whole grain foods</b> – such as oats and higher fibre versions of pasta, rice and bread</li>
+                        <li><b>Lean meats</b> – such as skinless chicken and turkey</li>
+                        <li><b>White fish</b></li>
+                        <li><b>Reduced fat dairy</b> – skimmed milk and low fat yoghurt and cheese</li>
+                        <li><b>Vegetables</b></li>
+                        <li><b>entils</b></li>
+                        <li><b>Fruit</b></li>
+                    </ul>
+                    </br>
+                    <h3>Fatty foods to avoid or reduce</h3>
+                    Typically a low fat diet will involve reducing fat intake from foods such as butter, eggs and cheese.</br>
+                    </br>
+                    Other foods containing relatively high quantities of fat include salad dressings, certain sauces and pastry and sponge based foods.</br>
+                    </br>
+                </p>
+            </section>
+
+    </div>
+    </main>
+    <footer class="page-footer">
+        <small> Copyright 2021 © Sai Bhargav, Gagan Rohith || All rights reserved</small>
+        <ul>
+            <li>
+                <a href="" target="_blank">
+                    <i class="icon ion-logo-facebook"></i>
+                </a>
+            </li>
+            <li>
+                <a href="" target="_blank">
+                    <i class="icon ion-logo-twitter"></i>
+                </a>
+            </li>
+            <li>
+                <a href="" target="_blank">
+                    <i class="icon ion-logo-linkedin"></i>
+                </a>
+            </li>
+            <li>
+                <a href="" target="_blank">
+                    <i class="icon ion-logo-github"></i>
+                </a>
+            </li>
+        </ul>
+    </footer>
+    </div>
+    </div>
+</body>
+
+</html>

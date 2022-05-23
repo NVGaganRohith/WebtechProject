@@ -1,0 +1,472 @@
+<html>
+
+<head>
+    <title>Diet-Tracker</title>
+    <link rel="icon" href="https://www.logopik.com/wp-content/uploads/edd/2018/06/Diet-Logo-Design.png" type="image/x-icon">
+
+    <style>
+        @import url("https://fonts.googleapis.com/css?family=Dosis:400,700");
+         :root {
+            --main-white-color: #f2f2f2;
+            --main-green-color: #2e8b57;
+            --main-black-color: black;
+            --main-purple-color: #9e89b8;
+        }
+        
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+        
+        button {
+            background: #1be7a5;
+            background: linear-gradient(#1be7a5, #16831d);
+            border-radius: 11px;
+            padding: 5px 10px;
+            color: #ffffff;
+            display: inline-block;
+            font: normal bold 20px/1 "Open Sans", sans-serif;
+            text-align: center;
+        }
+        
+        ul {
+            list-style: none;
+        }
+        
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+        
+        body {
+            font: 16px/1.5 "Dosis", sans-serif;
+            background: var(--main-white-color);
+            /*IE FIX*/
+            display: flex;
+            flex-direction: column;
+        }
+        /* CONTAINER
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+        
+        .wrapper {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        
+        .wrapper>* {
+            padding: 0px;
+        }
+        /* HEADER
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+        
+        .page-header {
+            background: var(--main-green-color);
+        }
+        
+        .page-header nav {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+        
+        .page-header ul {
+            display: flex;
+            order: 1;
+            width: 100%;
+            margin-top: 15px;
+        }
+        
+        .page-header ul li:not(:last-child) {
+            padding-right: 15px;
+        }
+        /* MAIN
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+        
+        .page-main {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            flex-grow: 1;
+            min-height: 350px;
+            background: url(https://thumbs.dreamstime.com/b/healthy-food-background-studio-photo-different-fruits-vegetables-white-wooden-table-high-resolution-product-68278527.jpg) no-repeat center / cover;
+            background-blend-mode: luminosity;
+            color: black;
+        }
+        
+        .find-diet1 {
+            max-width: 500px;
+            position: relative;
+            left: 200px;
+        }
+        
+        .find-diet2 {
+            max-width: 500px;
+            position: relative;
+            left: 1000px;
+            top: -390px;
+        }
+        
+        .find-diet3 {
+            max-width: 500px;
+            position: relative;
+            top: -350px;
+            left: 200px;
+        }
+        
+        .find-diet4 {
+            max-width: 500px;
+            position: relative;
+            left: 1000px;
+            top: -780px;
+        }
+        
+        .page-main h1 {
+            margin-bottom: 20px;
+            text-align: center;
+            font-size: 60px;
+            color: #00BFFF;
+        }
+        
+        .page-main h2 {
+            color: #00BFFF;
+        }
+        
+        .para {
+            margin-top: 10px;
+            text-align: center;
+            font-size: 20px;
+        }
+        
+        .PR {
+            position: relative;
+            max-width: 500px;
+            left: 0px;
+            top: -350px;
+        }
+        
+        .ET {
+            position: relative;
+            max-width: 500px;
+            top: -743px;
+            left: 600px;
+        }
+        
+        .IG {
+            position: relative;
+            max-width: 500px;
+            top: -1143px;
+            left: 1200px;
+        }
+        
+        .botm {
+            background-color: var(--main-green-color);
+            width: 100%;
+            position: relative;
+            height: 500px;
+        }
+        /* FOOTER
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+        
+        .page-footer {
+            display: flex;
+            flex-direction: column-reverse;
+            background: var(--main-white-color);
+        }
+        
+        .page-footer ul {
+            display: flex;
+            font-size: 1.5rem;
+            margin-bottom: 5px;
+        }
+        
+        .page-footer ul li:not(:last-child) {
+            margin-right: 20px;
+        }
+        /* MQ
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+        
+        @media screen and (min-width: 550px) {
+            .page-header ul {
+                width: auto;
+                margin-top: 0;
+            }
+            .page-header .cta-contact {
+                order: 1;
+            }
+            .page-footer {
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
+            }
+            .page-footer ul {
+                margin-bottom: 0;
+            }
+        }
+        
+        @media screen and (min-width: 768px) {
+            body {
+                font-size: 18px;
+            }
+            .page-main {
+                padding-left: 90px;
+            }
+        }
+        /* ANIMATIONS
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+        
+        .page-header nav>*,
+        .page-main,
+        .page-footer>* {
+            opacity: 0;
+        }
+        
+        .page-header,
+        .page-footer,
+        .page-main .text-wrapper {
+            overflow: hidden;
+        }
+        
+        .page-header nav>* {
+            transform: translateY(-30px);
+        }
+        
+        .page-footer>* {
+            transform: translateY(30px);
+        }
+        
+        .page-header {
+            position: relative;
+        }
+        
+        .page-header::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: var(--main-purple-color);
+            z-index: 99999;
+            transform: scaleX(0);
+        }
+        
+        .page-main .text-wrapper+.text-wrapper {
+            margin-top: 10px;
+        }
+        
+        .page-main .text-wrapper * {
+            transform: translateY(120%);
+        }
+        
+        .page-main .p-wrapper * {
+            transform: translateY(-120%);
+        }
+        
+        .loaded .page-header::after {
+            animation: scaleIn 1.3s ease-in 0.1s forwards;
+        }
+        
+        .loaded .page-main {
+            animation: fadeIn 1s ease-in 0.5s forwards;
+        }
+        
+        .loaded .page-header nav>*,
+        .loaded .page-footer>* {
+            animation: fadeIn 1s ease-in 0.5s forwards, slideIn 0.6s ease-in 0.7s forwards;
+        }
+        
+        .loaded .page-main .text-wrapper * {
+            animation: slideIn 0.6s cubic-bezier(0.54, 0.46, 0.54, 0.94) 1s forwards;
+        }
+        
+        @keyframes fadeIn {
+            60% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+        
+        @keyframes scaleIn {
+            100% {
+                transform: scaleX(1);
+            }
+        }
+        
+        @keyframes slideIn {
+            100% {
+                transform: translateY(0);
+            }
+        }
+    </style>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script>
+        window.addEventListener("load", () => {
+            document.querySelector("body").classList.add("loaded");
+        });
+    </script>
+</head>
+
+<body>
+    <div class="wrapper">
+        <header class="page-header">
+            <nav>
+                <img src="https://w7.pngwing.com/pngs/1004/377/png-transparent-health-food-logo-diet-eating-trademark-logo-food-leaf-sleep.png" height="70px" />
+                <ul style="padding-left:600px">
+                    <li>
+                        <a href="diets_page.html">Diets</a>
+                    </li>
+                    <li style="padding-left:50px">
+                        <a href="foods_page.html">Food</a>
+                    </li>
+                    <li style="padding-left:50px">
+                        <a href="tracking.html">Track Calories</a>
+                    </li>
+                    <li style="padding-left:50px">
+                        <a href="about_us_page.html">About Us</a>
+                    </li>
+                    <li style="padding-left:550px">
+                        <form action="/logout" method="post">
+                            <button class="cta-content" onclick="">Log-Out</button>
+                        </form>
+                    </li>
+                </ul>
+            </nav>
+        </header>
+        <main class="page-main">
+            <section>
+                <h2 id="Baked">Baked Foods</h2>
+                <img align="right" src=""></img>
+                <p>
+                    </br>
+                    Baked goods, like snack foods, represent a very broad category with a wide range of processing steps.</br>
+                    </br>
+                    In general, baked goods have a flavor profile sensitive to herb notes and require a reduced flavor or </br>
+                    </br>
+                    highly deflavorized sage or rosemary antioxidant. The antioxidant should be added to the dough of the </br>
+                    </br>
+                    baked goods. This could be predispersed in a water or oil phase or added directly to the blender. If </br>
+                    </br>
+                    adding without predispersion, an antioxidant should be chosen with a less concentrated form of antioxidant </br>
+                    </br>
+                    and used at a higher dosage rate (i.e., 0.2%). This will allow for even distribution throughout the dough and </br>
+                    </br>
+                    avoid “hot spots” that could occur when using a more concentrated product</br>
+                    </br>
+                </p>
+            </section>
+            <section>
+                <h2 id="DandG">Dairy and Eggs</h2>
+                <img align="right" src=""></img>
+                <p>
+                    Milk and other dairy products are the top sources of artery-clogging saturated fat in the American diet.</br>
+                    </br>
+                    Milk products also contain cholesterol. Diets high in fat, saturated fat, and cholesterol increase the </br>
+                    </br>
+                    risk of heart disease, which remains America’s top killer. Cheese is especially dangerous. </br>
+                    </br>
+                    Typical cheeses are 70 percent fat.</br>
+                    </br>
+                    Eggs are widely considered to be a perfect protein source. Proteins are the building blocks of life, </br>
+                    </br>
+                    essential for the strength and repair of muscle and tissue – with one single egg containing about 6.3 grams </br>
+                    </br>
+                    of the highest-quality protein available. The powerful advantage of the protein in eggs links to the fact </br>
+                    </br>
+                    that eggs contain all nine essential amino acids – in sufficient amounts – to support effective muscle growth, </br>
+                    </br>
+                    recovery and maintenance. While some other foods contain proportionately more protein than eggs – </br>
+                    </br>
+                    the high-quality and bio-availability of protein in eggs is truly second to none.</br>
+                    </br>
+                </p>
+            </section>
+            <section>
+                <h2 id="Sea">Sea food</h2>
+                <p>
+                    Seafood includes vital nutrients needed for health and wellness at all ages, including omega-3s, iron, B and D vitamins, </br>
+                    </br>
+                    and protein. Fish and shellfish supply the nutrients, vitamins and omega 3s essential for strong bones, brain development </br>
+                    </br>
+                    and healthy heart and immune system . Seafood is high in protein and low in saturated fat, not to mention filled with </br>
+                    </br>
+                    those omega 3s that can really help with heart health and reducing the risk of cardiovascular events. We recommend </br>
+                    </br>
+                    trying fresh sashimi, it is good for your heart and will fill up your appetite as well.Seafood Eases Joint Pain.</br>
+                    </br>
+                </p>
+            </section>
+            <section>
+                <h2 id="Veg">Vegetables</h2>
+                <p>
+                    Eating vegetables every day is important for health. They provide essential vitamins, minerals, and other nutrients,</br>
+                    </br>
+                    such as antioxidants and fiber.Research consistently shows that people who eat at least 5 servings of vegetables a </br>
+                    </br>
+                    day have the lowest risk of many diseases, including cancer and heart disease.Enjoy a range of vegetables daily </br>
+                    </br>
+                    to reap as many health benefits as possible.</br>
+                    </br>
+                </p>
+            </section>
+            <section>
+                <h2 id="FandJ">Fruit and Juices</h2>
+                <p>
+                    Fruit are a good source of vitamins and minerals, including folate, vitamin C and potassium. They're an excellent </br>
+                    </br>
+                    source of dietary fibre, which can help to maintain a healthy gut and prevent constipation and other digestion problems. </br>
+                    </br>
+                    A diet high in fibre can also reduce your risk of bowel cancer. It's true that 100% fruit juice is a good source of </br>
+                    </br>
+                    nutrients like vitamin C and potassium. The problem is that too much juice can be an extra source of sugar and calories. </br>
+                    </br>
+                    Juice also doesn't contain the same fiber and phytonutrients that raw fruits have.</br>
+                    </br>
+                </p>
+            </section>
+            <section>
+                <h2 id="Sweet">Sweets</h2>
+                <p>
+                    Consuming fructose increases your hunger and desire for food more than glucose, the main type of sugar found in starchy foods.</br>
+                    </br>
+                    Additionally, excessive fructose consumption may cause resistance to leptin, an important hormone that regulates hunger and tells your body to stop eating.</br>
+                    </br>
+                    In other words, sugary beverages don’t curb your hunger, making it easy to quickly consume a high number of liquid calories. This can lead to weight gain.</br>
+                    </br>
+                </p>
+            </section>
+    </div>
+    </main>
+    <footer class="page-footer">
+        <small> Copyright 2021 © Sai Bhargav, Gagan Rohith || All rights reserved</small>
+        <ul>
+            <li>
+                <a href="" target="_blank">
+                    <i class="icon ion-logo-facebook"></i>
+                </a>
+            </li>
+            <li>
+                <a href="" target="_blank">
+                    <i class="icon ion-logo-twitter"></i>
+                </a>
+            </li>
+            <li>
+                <a href="" target="_blank">
+                    <i class="icon ion-logo-linkedin"></i>
+                </a>
+            </li>
+            <li>
+                <a href="" target="_blank">
+                    <i class="icon ion-logo-github"></i>
+                </a>
+            </li>
+        </ul>
+    </footer>
+    </div>
+    </div>
+</body>
+
+</html>

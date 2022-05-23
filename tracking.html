@@ -1,0 +1,416 @@
+<html>
+
+<head>
+    <link rel="icon" href="https://www.logopik.com/wp-content/uploads/edd/2018/06/Diet-Logo-Design.png" type="image/x-icon">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+
+    <title>Calorie Calculator</title>
+
+    <style>
+        #loading,
+        #results {
+            display: none;
+        }
+        
+        #loading {
+            width: 100%;
+        }
+    </style>
+
+    <style>
+        @import url("https://fonts.googleapis.com/css?family=Dosis:400,700");
+         :root {
+            --main-white-color: #f2f2f2;
+            --main-green-color: #2e8b57;
+            --main-black-color: black;
+            --main-purple-color: #9e89b8;
+        }
+        
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+        
+        button {
+            background: #1be7a5;
+            background: linear-gradient(#1be7a5, #16831d);
+            border-radius: 11px;
+            padding: 5px 10px;
+            color: #ffffff;
+            display: inline-block;
+            font: normal bold 20px/1 "Open Sans", sans-serif;
+            text-align: center;
+        }
+        
+        ul {
+            list-style: none;
+        }
+        
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+        
+        body {
+            font: 16px/1.5 "Dosis", sans-serif;
+            background: var(--main-white-color);
+            /*IE FIX*/
+            display: flex;
+            flex-direction: column;
+        }
+        
+        p {
+            color: #00008B;
+        }
+        /* CONTAINER
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+        
+        .wrapper {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        
+        .wrapper>* {
+            padding: 0px;
+        }
+        /* HEADER
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+        
+        .page-header {
+            background: var(--main-green-color);
+        }
+        
+        .page-header nav {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+        
+        .page-header ul {
+            display: flex;
+            order: 1;
+            width: 100%;
+            margin-top: 15px;
+        }
+        
+        .page-header ul li:not(:last-child) {
+            padding-right: 15px;
+        }
+        /* MAIN
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+        
+        .page-main {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            flex-grow: 1;
+            min-height: 350px;
+            background: url(https://thumbs.dreamstime.com/b/healthy-food-background-studio-photo-different-fruits-vegetables-white-wooden-table-high-resolution-product-68278527.jpg) no-repeat center / cover;
+            background-blend-mode: luminosity;
+            color: var(--main-black-color);
+        }
+        
+        .botm {
+            background-color: var(--main-green-color);
+            width: 100%;
+            position: relative;
+            height: 500px;
+        }
+        /* FOOTER
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+        
+        .page-footer {
+            display: flex;
+            flex-direction: column-reverse;
+            background: var(--main-white-color);
+        }
+        
+        .page-footer ul {
+            display: flex;
+            font-size: 1.5rem;
+            margin-bottom: 5px;
+        }
+        
+        .page-footer ul li:not(:last-child) {
+            margin-right: 20px;
+        }
+        /* MQ
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+        
+        @media screen and (min-width: 550px) {
+            .page-header ul {
+                width: auto;
+                margin-top: 0;
+            }
+            .page-header .cta-contact {
+                order: 1;
+            }
+            .page-footer {
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
+            }
+            .page-footer ul {
+                margin-bottom: 0;
+            }
+        }
+        
+        @media screen and (min-width: 768px) {
+            body {
+                font-size: 18px;
+            }
+            .page-main {
+                padding-left: 90px;
+            }
+        }
+        /* ANIMATIONS
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+        
+        .page-header nav>*,
+        .page-main,
+        .page-footer>* {
+            opacity: 0;
+        }
+        
+        .page-header,
+        .page-footer,
+        .page-main .text-wrapper {
+            overflow: hidden;
+        }
+        
+        .page-header nav>* {
+            transform: translateY(-30px);
+        }
+        
+        .page-footer>* {
+            transform: translateY(30px);
+        }
+        
+        .page-header {
+            position: relative;
+        }
+        
+        .page-header::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: var(--main-purple-color);
+            z-index: 99999;
+            transform: scaleX(0);
+        }
+        
+        .page-main .text-wrapper+.text-wrapper {
+            margin-top: 10px;
+        }
+        
+        .page-main .text-wrapper * {
+            transform: translateY(120%);
+        }
+        
+        .page-main .p-wrapper * {
+            transform: translateY(-120%);
+        }
+        
+        .loaded .page-header::after {
+            animation: scaleIn 1.3s ease-in 0.1s forwards;
+        }
+        
+        .loaded .page-main {
+            animation: fadeIn 1s ease-in 0.5s forwards;
+        }
+        
+        .loaded .page-header nav>*,
+        .loaded .page-footer>* {
+            animation: fadeIn 1s ease-in 0.5s forwards, slideIn 0.6s ease-in 0.7s forwards;
+        }
+        
+        .loaded .page-main .text-wrapper * {
+            animation: slideIn 0.6s cubic-bezier(0.54, 0.46, 0.54, 0.94) 1s forwards;
+        }
+        
+        @keyframes fadeIn {
+            60% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+        
+        @keyframes scaleIn {
+            100% {
+                transform: scaleX(1);
+            }
+        }
+        
+        @keyframes slideIn {
+            100% {
+                transform: translateY(0);
+            }
+        }
+    </style>
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script>
+        window.addEventListener("load", () => {
+            document.querySelector("body").classList.add("loaded");
+        });
+    </script>
+</head>
+
+<body>
+    <div class="wrapper">
+        <header class="page-header">
+            <nav>
+                <img src="https://w7.pngwing.com/pngs/1004/377/png-transparent-health-food-logo-diet-eating-trademark-logo-food-leaf-sleep.png" height="70px" />
+                <ul style="padding-left:600px">
+                    <li>
+                        <a href="diets_page.html">Diets</a>
+                    </li>
+                    <li style="padding-left:50px">
+                        <a href="foods_page.html">Food</a>
+                    </li>
+                    <li style="padding-left:50px">
+                        <a href="tracker.html">Track Calories</a>
+                    </li>
+                    <li style="padding-left:50px">
+                        <a href="about_us_page.html">About Us</a>
+                    </li>
+                    <li style="padding-left:550px">
+                        <form action="/logout" method="post">
+                            <button class="cta-content" onclick="">Log-Out</button>
+                        </form>
+                    </li>
+                </ul>
+            </nav>
+        </header>
+        <main class="page-main">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6 mx-auto">
+                        <div class="card card-body text-center mt-5">
+                            <h1 class="heading display-5 pb-3">Calorie Calculator</h1>
+                            <form id="calorie-form">
+
+                                <div class="form-group row">
+                                    <label for="age" class="col-sm-2 col-form-label">Age</label>
+                                    <div class="col-sm-10">
+                                        <input type="number" class="form-control" id="age" placeholder="Ages 15-80">
+                                    </div>
+                                </div>
+
+                                <fieldset class="form-group">
+                                    <div class="row">
+                                        <legend class="col-form-label col-sm-2 pt-0">Gender</legend>
+                                        <div class="col-sm-10" id="form-radio">
+                                            <div class="custom-control custom-radio custom-control-inline">
+                                                <input type="radio" id="male" name="customRadioInline1" class="custom-control-input" checked="checked">
+                                                <label class="custom-control-label" for="male">Male</label>
+                                            </div>
+                                            <div class="custom-control custom-radio custom-control-inline">
+                                                <input type="radio" id="female" name="customRadioInline1" class="custom-control-input">
+                                                <label class="custom-control-label" for="female">Female</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </fieldset>
+
+                                <div class="form-group row">
+                                    <label for="weight" class="col-sm-2 col-form-label">Weight</label>
+                                    <div class="col-sm-10">
+                                        <input type="number" class="form-control" id="weight" placeholder="In kilograms">
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label for="height" class="col-sm-2 col-form-label">Height</label>
+                                    <div class="col-sm-10">
+                                        <input type="number" class="form-control" id="height" placeholder="In centimeters">
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <legend class="col-form-label col-sm-2 pt-0">Activity</legend>
+                                    <select class="custom-select col-sm-10" id="list">
+                          <option selected value="1">Sedentary (little or no exercise)</option>
+                          <option value="2">Lightly active (light exercise/sports 1-3 days/week)</option>
+                          <option value="3">Moderately active (moderate exercise/sports 3-5 days/week)</option>
+                          <option value="4">Very active (hard exercise/sports 6-7 days a week)</option>
+                          <option value="5">Extra active (very hard exercise/sports & physical job or 2x training)</option>
+                        </select>
+                                </div>
+
+                                <div class="form-group">
+                                    <input type="submit" value="Calculate" class="btn btn-dark btn-block">
+                                </div>
+
+                            </form>
+
+                            <div id="loading">
+                                <img src="./Loading.gif" alt="">
+                            </div>
+
+                            <div id="results" class="pt-4">
+                                <h5>Your Basal Metabolic Rate(BMR)</h5>
+                                <div class="form-group">
+                                    <div class="input-group">
+                                        <input type="number" class="form-control" id="total-calories" disabled>
+                                    </div>
+                                </div><br>
+                                <h5>Your BMI</h5>
+                                <div class="form-group">
+                                    <div class="input-group">
+                                        <input type="number" class="form-control" id="BMI" disabled>
+                                    </div>
+                                </div><br>
+                                <div>
+                                    <img src="bmi__WHO.jpg" width="80%" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Optional JavaScript -->
+            <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+            <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+            <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+            <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+            <script src="app1.js"></script>
+        </main>
+        <footer class="page-footer">
+            <small> Copyright 2021 © Sai Bhargav, Gagan Rohith || All rights reserved</small>
+            <ul>
+                <li>
+                    <a href="" target="_blank">
+                        <i class="icon ion-logo-facebook"></i>
+                    </a>
+                </li>
+                <li>
+                    <a href="" target="_blank">
+                        <i class="icon ion-logo-twitter"></i>
+                    </a>
+                </li>
+                <li>
+                    <a href="" target="_blank">
+                        <i class="icon ion-logo-linkedin"></i>
+                    </a>
+                </li>
+                <li>
+                    <a href="" target="_blank">
+                        <i class="icon ion-logo-github"></i>
+                    </a>
+                </li>
+            </ul>
+        </footer>
+    </div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,12 @@
+header of start page:
+
+.page-header ul {
+            display: flex;
+            order: 1;
+            width: 100%;
+            margin-top: 15px;
+        }
+        
+        .page-header ul li:not(:last-child) {
+            padding-right: 15px;
+        }

@@ -1,0 +1,418 @@
+<html>
+
+<head>
+    <title>Diet-Tracker</title>
+    <link rel="icon" href="https://www.logopik.com/wp-content/uploads/edd/2018/06/Diet-Logo-Design.png" type="image/x-icon">
+
+    <style>
+        @import url("https://fonts.googleapis.com/css?family=Dosis:400,700");
+         :root {
+            --main-white-color: #f2f2f2;
+            --main-green-color: #2e8b57;
+            --main-black-color: black;
+            --main-purple-color: #9e89b8;
+        }
+        
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+        
+        button {
+            background: #1be7a5;
+            background: linear-gradient(#1be7a5, #16831d);
+            border-radius: 11px;
+            padding: 5px 10px;
+            color: #ffffff;
+            display: inline-block;
+            font: normal bold 20px/1 "Open Sans", sans-serif;
+            text-align: center;
+        }
+        
+        ul {
+            list-style: none;
+        }
+        
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+        
+        body {
+            font: 16px/1.5 "Dosis", sans-serif;
+            background: var(--main-white-color);
+            /*IE FIX*/
+            display: flex;
+            flex-direction: column;
+        }
+        
+        p {
+            color: #00008B;
+        }
+        /* CONTAINER
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+        
+        .wrapper {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        
+        .wrapper>* {
+            padding: 0px;
+        }
+        /* HEADER
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+        
+        .page-header {
+            background: var(--main-green-color);
+        }
+        
+        .page-header nav {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+        
+        .page-header ul {
+            display: flex;
+            order: 1;
+            width: 100%;
+            margin-top: 15px;
+        }
+        
+        .page-header ul li:not(:last-child) {
+            padding-right: 15px;
+        }
+        /* MAIN
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+        
+        .page-main {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            flex-grow: 1;
+            min-height: 350px;
+            background: url(https://thumbs.dreamstime.com/b/healthy-food-background-studio-photo-different-fruits-vegetables-white-wooden-table-high-resolution-product-68278527.jpg) no-repeat center / cover;
+            background-blend-mode: luminosity;
+            color: var(--main-white-color);
+        }
+        
+        .find-diet1 {
+            max-width: 500px;
+            position: relative;
+            left: 200px;
+        }
+        
+        .find-diet2 {
+            max-width: 500px;
+            position: relative;
+            left: 1000px;
+            top: -390px;
+        }
+        
+        .find-diet3 {
+            max-width: 500px;
+            position: relative;
+            top: -350px;
+            left: 200px;
+        }
+        
+        .find-diet4 {
+            max-width: 500px;
+            position: relative;
+            left: 1000px;
+            top: -780px;
+        }
+        
+        .page-main h1 {
+            margin-bottom: 20px;
+            text-align: center;
+            font-size: 60px;
+            color: #00BFFF;
+        }
+        
+        .page-main h2 {
+            color: #00BFFF;
+        }
+        
+        .para {
+            margin-top: 10px;
+            text-align: center;
+            font-size: 20px;
+        }
+        
+        .PR {
+            position: relative;
+            max-width: 500px;
+            left: 0px;
+            top: -350px;
+        }
+        
+        .ET {
+            position: relative;
+            max-width: 500px;
+            top: -743px;
+            left: 600px;
+        }
+        
+        .IG {
+            position: relative;
+            max-width: 500px;
+            top: -1143px;
+            left: 1200px;
+        }
+        
+        .botm {
+            background-color: var(--main-green-color);
+            width: 100%;
+            position: relative;
+            height: 500px;
+        }
+        /* FOOTER
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+        
+        .page-footer {
+            display: flex;
+            flex-direction: column-reverse;
+            background: var(--main-white-color);
+        }
+        
+        .page-footer ul {
+            display: flex;
+            font-size: 1.5rem;
+            margin-bottom: 5px;
+        }
+        
+        .page-footer ul li:not(:last-child) {
+            margin-right: 20px;
+        }
+        /* MQ
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+        
+        @media screen and (min-width: 550px) {
+            .page-header ul {
+                width: auto;
+                margin-top: 0;
+            }
+            .page-header .cta-contact {
+                order: 1;
+            }
+            .page-footer {
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
+            }
+            .page-footer ul {
+                margin-bottom: 0;
+            }
+        }
+        
+        @media screen and (min-width: 768px) {
+            body {
+                font-size: 18px;
+            }
+            .page-main {
+                padding-left: 90px;
+            }
+        }
+        /* ANIMATIONS
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+        
+        .page-header nav>*,
+        .page-main,
+        .page-footer>* {
+            opacity: 0;
+        }
+        
+        .page-header,
+        .page-footer,
+        .page-main .text-wrapper {
+            overflow: hidden;
+        }
+        
+        .page-header nav>* {
+            transform: translateY(-30px);
+        }
+        
+        .page-footer>* {
+            transform: translateY(30px);
+        }
+        
+        .page-header {
+            position: relative;
+        }
+        
+        .page-header::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: var(--main-purple-color);
+            z-index: 99999;
+            transform: scaleX(0);
+        }
+        
+        .page-main .text-wrapper+.text-wrapper {
+            margin-top: 10px;
+        }
+        
+        .page-main .text-wrapper * {
+            transform: translateY(120%);
+        }
+        
+        .page-main .p-wrapper * {
+            transform: translateY(-120%);
+        }
+        
+        .loaded .page-header::after {
+            animation: scaleIn 1.3s ease-in 0.1s forwards;
+        }
+        
+        .loaded .page-main {
+            animation: fadeIn 1s ease-in 0.5s forwards;
+        }
+        
+        .loaded .page-header nav>*,
+        .loaded .page-footer>* {
+            animation: fadeIn 1s ease-in 0.5s forwards, slideIn 0.6s ease-in 0.7s forwards;
+        }
+        
+        .loaded .page-main .text-wrapper * {
+            animation: slideIn 0.6s cubic-bezier(0.54, 0.46, 0.54, 0.94) 1s forwards;
+        }
+        
+        @keyframes fadeIn {
+            60% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+        
+        @keyframes scaleIn {
+            100% {
+                transform: scaleX(1);
+            }
+        }
+        
+        @keyframes slideIn {
+            100% {
+                transform: translateY(0);
+            }
+        }
+    </style>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script>
+        window.addEventListener("load", () => {
+            document.querySelector("body").classList.add("loaded");
+        });
+    </script>
+</head>
+
+<body>
+    <div class="wrapper">
+        <header class="page-header">
+            <nav>
+                <img src="https://w7.pngwing.com/pngs/1004/377/png-transparent-health-food-logo-diet-eating-trademark-logo-food-leaf-sleep.png" height="70px" />
+                <ul style="padding-left:600px">
+                    <li>
+                        <a href="diets_page.html">Diets</a>
+                    </li>
+                    <li style="padding-left:50px">
+                        <a href="foods_page.html">Food</a>
+                    </li>
+                    <li style="padding-left:50px">
+                        <a href="tracking.html">Track Calories</a>
+                    </li>
+                    <li style="padding-left:50px">
+                        <a href="about_us_page.html">About Us</a>
+                    </li>
+                    <li style="padding-left:550px">
+                        <form action="/logout" method="post">
+                            <button class="cta-content" onclick="">Log-Out</button>
+                        </form>
+                    </li>
+                </ul>
+            </nav>
+        </header>
+        <main class="page-main">
+            <div>
+                <div class="text-wrapper p-wrapper">
+                    <h1>Be Healthy for Life</h1>
+                    <p class="para">Your weight loss,diet,and nutrition assistant.</p><br><br><br><br><br><br><br>
+                </div>
+                <h1>What it takes to succeed</h1><br><br><br>
+                <div class="find-diet1" style="text-align:center;">
+                    <img src="https://s3.amazonaws.com/img.mynetdiary.com/images/cover-insights-Illustration-1@2x.png" height="300px">
+                    <h2>Find your Diet</h2>
+                    <p>Find a diet that fits your lifestyle: Calorie Counting, Low-Card, Keto, Vegan, Vegetarian and more.</p>
+                </div>
+                <div class="find-diet2" style="text-align:center;">
+                    <img src="https://s3.amazonaws.com/img.mynetdiary.com/images/cover-insights-Illustration-2@2x.png" height="300px">
+                    <h2>Set Your Targets</h2>
+                    <p>Choose your desired weekly weight loss rate, target date, and source of calories like fat, carbs, and proteins.</p>
+                </div>
+                <div class="find-diet3" style="text-align:center;">
+                    <img src="https://s3.amazonaws.com/img.mynetdiary.com/images/cover-insights-Illustration-3@2x.png" height="300px">
+                    <h2>Log Your Meals & Exercise</h2>
+                    <p>Use the website to track your food, physical activities, and nutrients. Use the barcode scanner. Log ahead of time for better planning and scheduling.</p>
+                </div>
+                <div class="find-diet4" style="text-align:center;">
+                    <img src="https://s3.amazonaws.com/img.mynetdiary.com/images/cover-insights-Illustration-4@2x.png" height="300px">
+                    <h2>Reach Your Goals</h2>
+                    <p>Monitor your daily progress, check your weight loss forecast, and receive ongoing advice and feedback. Learn more about nutrients in your diet and make better choices.</p>
+                </div>
+                <h1 style="position:relative; top:-500px; left:0px;">More Info</h1>
+                <div class="PR" style="text-align:center">
+                    <img src="https://s3.amazonaws.com/img.mynetdiary.com/keto/cover-premium-keto-recipes@2x.jpg" height="300px">
+                    <h2>Premium Recipes</h2>
+                    <p>Hundreds of easy recipes, with great variety, carefully crafted for great taste by a team of Registered Dietitians.</p>
+                </div>
+                <div class="ET" style="text-align:center">
+                    <img src="Et.png" height="300px">
+                    <h2>Easy Tracking</h2>
+                    <p>Massive food catalog, fastest barcode scanner, quickest food lookup making food tracking a breeze</p>
+                </div>
+                <div class="IG" style="text-align:center">
+                    <img src="https://s3.amazonaws.com/img.mynetdiary.com/images/cover-insights-and-guidance-keto@2x.png" height="300px">
+                    <h2>Insights and Guidance</h2>
+                    <p>Encouraging and supportive feedback, guiding you to your goal.</p>
+                </div>
+
+            </div>
+        </main>
+        <footer class="page-footer">
+            <small> Copyright 2021 © Sai Bhargav, Gagan Rohith || All rights reserved</small>
+            <ul>
+                <li>
+                    <a href="" target="_blank">
+                        <i class="icon ion-logo-facebook"></i>
+                    </a>
+                </li>
+                <li>
+                    <a href="" target="_blank">
+                        <i class="icon ion-logo-twitter"></i>
+                    </a>
+                </li>
+                <li>
+                    <a href="" target="_blank">
+                        <i class="icon ion-logo-linkedin"></i>
+                    </a>
+                </li>
+                <li>
+                    <a href="" target="_blank">
+                        <i class="icon ion-logo-github"></i>
+                    </a>
+                </li>
+            </ul>
+        </footer>
+    </div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,300 @@
+@import url("https://fonts.googleapis.com/css?family=Dosis:400,700");
+
+:root {
+  --main-white-color: #f2f2f2;
+  --main-green-color: #2e8b57;
+  --main-black-color: black;
+  --main-purple-color: #9e89b8;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+button {
+   background:#1be7a5;
+   background:linear-gradient(#1be7a5, #16831d);
+   border-radius:11px;
+   padding:5px 10px;
+   color:#ffffff;
+   display:inline-block;
+   font:normal bold 20px/1 "Open Sans", sans-serif;
+   text-align:center;
+}
+
+ul {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+body {
+  font: 16px/1.5 "Dosis", sans-serif;
+  background: var(--main-white-color);
+  /*IE FIX*/
+  display: flex;
+  flex-direction: column;
+}
+
+p{
+  color:#00008B;
+}
+/* CONTAINER
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.wrapper > * {
+  padding: 0px;
+}
+
+
+/* HEADER
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+.page-header {
+  background: var(--main-green-color);
+}
+.page-header nav {
+  display: flex;
+  flex-wrap: wrap;
+  align-items:center;
+}
+
+.page-header ul {
+  display: flex;
+  order: 1;
+  width: 100%;
+  margin-top: 15px;
+}
+
+.page-header ul li:not(:last-child) {
+  padding-right: 15px;
+}
+
+/* MAIN
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+.page-main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex-grow: 1;
+  min-height: 350px;
+  background: 
+    url(https://thumbs.dreamstime.com/b/healthy-food-background-studio-photo-different-fruits-vegetables-white-wooden-table-high-resolution-product-68278527.jpg) no-repeat
+    center / cover;
+  background-blend-mode: luminosity;
+  color: var(--main-white-color);
+}
+
+.find-diet1 {
+  max-width:500px;
+  position:relative;
+  left:200px;
+}
+.find-diet2 {
+  max-width:500px;
+  position:relative;
+  left:1000px;
+  top:-390px;
+}
+.find-diet3 {
+  max-width:500px;
+  position:relative;
+  top:-350px;
+  left:200px;
+}
+.find-diet4 {
+  max-width:500px;
+  position:relative;
+  left:1000px;
+  top:-780px;
+}
+.page-main h1 {
+  margin-bottom: 20px;
+  text-align:center;
+  font-size: 60px;
+  color:#00BFFF;
+}
+.page-main h2 {
+  color:#00BFFF;
+}
+.para {
+  margin-top: 10px;
+  text-align:center;
+  font-size: 20px;
+}
+
+.PR{
+  position:relative;
+  max-width:500px;
+  left:0px;
+  top:-350px;
+}
+.ET {
+  position:relative;
+  max-width:500px;
+  top:-743px;
+  left: 600px;
+}
+.IG {
+  position:relative;
+  max-width:500px;
+  top:-1143px;
+  left:1200px;
+}
+
+.botm {
+  background-color:var(--main-green-color);
+  width:100%;
+  position:relative;
+  height:500px;
+}
+
+/* FOOTER
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+.page-footer {
+  display: flex;
+  flex-direction: column-reverse;
+  background: var(--main-white-color);
+}
+
+.page-footer ul {
+  display: flex;
+  font-size: 1.5rem;
+  margin-bottom: 5px;
+}
+
+.page-footer ul li:not(:last-child) {
+  margin-right: 20px;
+}
+
+
+/* MQ
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+@media screen and (min-width: 550px) {
+  .page-header ul {
+    width: auto;
+    margin-top: 0;
+  }
+
+  .page-header .cta-contact {
+    order: 1;
+  }
+
+  .page-footer {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .page-footer ul {
+    margin-bottom: 0;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  body {
+    font-size: 18px;
+  }
+
+  .page-main {
+    padding-left: 90px;
+  }
+}
+
+/* ANIMATIONS
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+.page-header nav > *,
+.page-main,
+.page-footer > * {
+  opacity: 0;
+}
+
+.page-header,
+.page-footer,
+.page-main .text-wrapper {
+  overflow: hidden;
+}
+
+.page-header nav > * {
+  transform: translateY(-30px);
+}
+
+.page-footer > * {
+  transform: translateY(30px);
+}
+
+.page-header {
+  position: relative;
+}
+
+.page-header::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: var(--main-purple-color);
+  z-index: 99999;
+  transform: scaleX(0);
+}
+
+.page-main .text-wrapper + .text-wrapper {
+  margin-top: 10px;
+}
+
+.page-main .text-wrapper * {
+  transform: translateY(120%);
+}
+
+.page-main .p-wrapper * {
+  transform: translateY(-120%);
+}
+
+.loaded .page-header::after {
+  animation: scaleIn 1.3s ease-in 0.1s forwards;
+}
+
+.loaded .page-main {
+  animation: fadeIn 1s ease-in 0.5s forwards;
+}
+
+.loaded .page-header nav > *,
+.loaded .page-footer > * {
+  animation: fadeIn 1s ease-in 0.5s forwards, slideIn 0.6s ease-in 0.7s forwards;
+}
+
+.loaded .page-main .text-wrapper * {
+  animation: slideIn 0.6s cubic-bezier(0.54, 0.46, 0.54, 0.94) 1s forwards;
+}
+
+@keyframes fadeIn {
+  60% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes scaleIn {
+  100% {
+    transform: scaleX(1);
+  }
+}
+
+@keyframes slideIn {
+  100% {
+    transform: translateY(0);
+  }
+}
